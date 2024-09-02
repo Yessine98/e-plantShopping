@@ -9,7 +9,7 @@ function ProductList() {
 
     const dispatch = useDispatch();
 
-    // Access the cart items from the Redux store
+   
     const cartItems = useSelector((state) => state.cart.items);
     const cartItemCount = cartItems.length;
 

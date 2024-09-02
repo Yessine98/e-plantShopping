@@ -7,24 +7,25 @@ const CartItem = ({ onContinueShopping }) => {
   const cart = useSelector(state => state.cart.items);
   const dispatch = useDispatch();
 
-  // Helper function to convert cost from string to number
+  
   const parseCost = (costStr) => {
-    // Log the costStr to debug
+    
     console.log(`Parsing cost: ${costStr}`);
     return parseFloat(costStr.replace('$', ''));
   };
 
-  // Calculate total amount for all products in the cart
+  
   const calculateTotalAmount = (items = []) => {
     return items.reduce((total, item) => {
       return total + item.quantity;
     }, 0);
   };
 
-  // Calculate total cost based on quantity for an item
+  
   const calculateTotalCost = (items = []) => {
     return items.reduce((total, item) => {
-      // Ensure item.cost is parsed to a number
+     
+        
       const cost = parseCost(item.cost);
       console.log(`Item cost: ${cost}, Quantity: ${item.quantity}`);
       return total + (item.quantity * cost);
@@ -53,7 +54,7 @@ const CartItem = ({ onContinueShopping }) => {
   };
 
   if (!cart) {
-    return <div>Loading...</div>; // Handle the case where cart is undefined
+    return <div>Loading...</div>;
   }
 
   if (cart.length === 0) {
@@ -63,8 +64,6 @@ const CartItem = ({ onContinueShopping }) => {
   const totalAmount = calculateTotalAmount(cart);
   const totalCost = calculateTotalCost(cart);
 
-  // Log the total cost to debug
-  console.log(`Total cost: ${totalCost}`);
 
   return (
     <div className="cart-container">
